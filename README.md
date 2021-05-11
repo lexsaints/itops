@@ -184,6 +184,15 @@ cd /usr/local/itops/dbinfo/ \
 ```
 pkill -9 uwsgi 
 ```
+
+> 重启uwsgi
+
+```
+先关闭uwsgi
+pkill -9 uwsgi
+再启动uwsgi
+/usr/python35/bin/uwsgi --http-socket 0.0.0.0:8080 --chdir /usr/local/itops/ --plugin python --wsgi-file /usr/local/itops/itops/wsgi.py --master --static-map /static=/usr/local/itops/static/ --static-map /static=/usr/local/itops/frontend/dist/static/ --static-map /static=/usr/python35/lib/python3.5/site-packages/rest_framework/static/ --processes 8 --threads 8 --static-gzip-dir=/usr/local/itops/frontend/
+```
 ## 5.系统配置
 ### 5.1.基于提供的vm虚拟机部署
 #### 5.1.1.启动uwsgi服务
