@@ -191,26 +191,13 @@ pkill -9 uwsgi
 先关闭uwsgi
 pkill -9 uwsgi
 再启动uwsgi
-/usr/python35/bin/uwsgi --http-socket 0.0.0.0:8080 --chdir /usr/local/itops/ --plugin python --wsgi-file /usr/local/itops/itops/wsgi.py --master --static-map /static=/usr/local/itops/static/ --static-map /static=/usr/local/itops/frontend/dist/static/ --static-map /static=/usr/python35/lib/python3.5/site-packages/rest_framework/static/ --processes 8 --threads 8 --static-gzip-dir=/usr/local/itops/frontend/
+/usr/local/python3/bin/uwsgi --http-socket 0.0.0.0:8080 --chdir /usr/local/itops/ --plugin python --wsgi-file /usr/local/itops/itops/wsgi.py --master --static-map /static=/usr/local/itops/static/ --static-map /static=/usr/local/itops/frontend/dist/static/ --static-map /static=/usr/local/python3/lib/python3.6/site-packages/rest_framework/static/ --processes 8 --threads 8 --static-gzip-dir=/usr/local/itops/frontend/
 ```
 ## 5.系统配置
-### 5.1.基于提供的vm虚拟机部署
-#### 5.1.1.启动uwsgi服务
-> 虚拟机默认自启动了uwsgi服务，即可以直接通过http://IP:8080 访问系统,并且每次重启centos系统都会自动启动uwsgi ,你也可以通过以下命令对uwsgi进行管理
-
-```
-supervisord 客户端管理命令
-supervisorctl status           #状态
-supervisorctl stop uwsgi         #停止 uwsgi
-supervisorctl start uwsgi        #启动 uwsgi
-supervisorctl restart uwsgi       #重启 uwsgi
 ```
 #### 5.1.2.账号密码
 
 ```
-centos账户:root 
-centos密码：QW*963.（注意最后有个点)
-
 mysql账户：root  
 mysql密码：tcQW*963@2019  
 mysql端口：3306  
@@ -239,7 +226,6 @@ mysqip:centos服务器IP
 #### 5.1.5.数据库配置
 
 ```
-虚拟机中已内置安装了mysql 无需单独安装
 mysql账户：root  
 mysql密码：tcQW*963@2019  
 mysql端口：3306  
